@@ -11,11 +11,11 @@ if (numberOfBMI == 0 || numberOfBMI < 0) {
 } else {
     if (numberOfBMI < 18.5) {
         console.log("Underweight")
-    } else if (numberOfBMI >= 18.5 && numberOfBMI <= 24.9) {
+    } else if (numberOfBMI <= 24.9) {
         console.log("Normal weight")
-    } else if (numberOfBMI >= 25 && numberOfBMI <= 29.9) {
+    } else if (numberOfBMI <= 29.9) {
         console.log("Overweight")
-    } else if (numberOfBMI > 30) {
-        console.log("Obesity")
-    } 
+    } else {
+        console.log(numberOfBMI)
+    }
 }
