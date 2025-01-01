@@ -16,6 +16,6 @@ if (numberOfBMI == 0 || numberOfBMI < 0) {
     } else if (numberOfBMI <= 29.9) {
         console.log("Overweight")
     } else {
-        console.log(numberOfBMI)
+        console.log("Obesity")
     }
 }
