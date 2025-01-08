@@ -1,4 +1,4 @@
-const readline = require('readline-sync');
+const readline = require('npm install readline-sync');
 
 
 let arrivalTime = readline.question("Arrival Time: ");
