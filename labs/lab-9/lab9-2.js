@@ -1,6 +1,6 @@
 const readline = require('readline-sync');
 
-var BASE_URL = "https://jsonplaceholder.typicode.com/posts";
+const BASE_URL = "https://jsonplaceholder.typicode.com/posts";
 
 menubar();
 
