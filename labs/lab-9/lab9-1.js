@@ -38,7 +38,9 @@ function getPosts() {
         return response.json();
     }).then(function(data) {
         var posts = data.filter(function(post) {
-            return post.userId == userId && post.id == postId;
+           if (post.userId == userId && post.id == postId) {
+               return post;
+            };
         });
         console.log(posts);
         menubar();
@@ -52,7 +54,9 @@ function getAllPostContent() {
         return response.json();
     }).then(function(data) {
         var posts = data.filter(function(post) {
-            return post.userId == userId;
+            if (post.userId == userId) {
+                return post;
+            };
         });
         console.log(posts);
         menubar();
