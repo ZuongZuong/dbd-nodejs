@@ -5,7 +5,7 @@ class RequestHandler {
     constructor(url) {
         this._url = url
     }
-    
+
     async getResponse() {
         const response = await fetch(this._url);
         return await response.json();

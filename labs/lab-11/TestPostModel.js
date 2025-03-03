@@ -5,7 +5,7 @@ const RequestHandler = require("./RequestHandler");
 lab11();
 
 // Function Declaration
-async function lab11(){
+async function lab11() {
     // Given params
     const userId = 1;
     const postId = 5;
