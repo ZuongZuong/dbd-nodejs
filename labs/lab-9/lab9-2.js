@@ -8,8 +8,7 @@ function menubar() {
     console.log('1. Get all posts from a user');
     console.log('2. Get post content');
     console.log('0. Exit');
-    var choice = Number(readline.question('Choose an option: '));
-    choose(choice)
+    choose(Number(readline.question('Choose an option: ')))
 };
 
 function choose(choice) {
