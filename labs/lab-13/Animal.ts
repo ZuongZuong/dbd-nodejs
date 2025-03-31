@@ -6,6 +6,7 @@ export default class Animal {
     constructor(maxSpeed: number) {
         this.maxSpeed = maxSpeed;
         this.speed = (Math.floor(Math.random() * 100) + 1) * maxSpeed;
+        this.name = "Animal";
     }
 
     getName(): string {
@@ -13,7 +14,7 @@ export default class Animal {
     }
 
     getSpeed(speed: number, maxSpeed: number) {
-         if (speed < 0) {
+        if (speed < 0) {
             console.log("Speed must be greater than 0");
         } else if (speed > this.maxSpeed) {
             console.log("Speed must be less than max speed");
@@ -21,5 +22,5 @@ export default class Animal {
             return this.speed;
         }
     }
-    
+
 }
