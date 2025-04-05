@@ -1,61 +1,8 @@
-import Employee from './Employee';
-import FullTimeEmployee from './FullTimeEmployee';
-import ContractEmployee from './ContractEmployee';
 import readline from 'readline-sync';
-const employees: Employee[] = [];
+import Employee from './Employee';
+import EmployeeController from './EmployeeController';
 
-function inputEmployee(): Employee {
-    const name = readline.question('Enter Employee Name: ')
-    const type = readline.question('Enter Employee Type (full-time/contract): ')
-    const workdays = readline.question('Enter Employee Workdays: ');
-    const workdaysNum = parseInt(workdays);
-    if (type === 'full-time') {
-        return new FullTimeEmployee(name, workdaysNum);
-    } else if (type === 'contract') {
-        return new ContractEmployee(name, workdaysNum);
-    } else {
-        throw new Error('Invalid employee type');
-    }
-}
-
-
-function addEmployee() {
-    const employee = inputEmployee();
-    employees.push(employee);
-}
-
-function calculateTotalSalary(): number {
-    let totalSalary = 0;
-    for (const employee of employees) {
-        totalSalary += employee.getSalary();
-    }
-    return totalSalary;
-}
-
-function findMinAndMaxSalary() {
-    let minSalary = employees[0].getSalary();
-    let maxSalary = employees[0].getSalary();
-    for (const employee of employees) {
-        const salary = employee.getSalary();
-        if (salary < minSalary) {
-            minSalary = salary;
-        }
-        if (salary > maxSalary) {
-            maxSalary = salary;
-        }
-    }
-    return { minSalary, maxSalary };
-}
-
-function displayEmployeeDetails() {
-    for (const employee of employees) {
-        console.log(`Name: ${employee.getName()}, Salary: ${employee.getSalary()}`);
-    }
-}
-
-function findEmployeeBySalary(salary: number): Employee | undefined {
-    return employees.find(employee => employee.getSalary() === salary);
-}
+const employeeController = new EmployeeController();
 
 function menu() {
     console.log('1. Add Employee');
@@ -75,33 +22,33 @@ function choose(option: number) {
                 console.log('------------------');
                 console.log(`Employee ${i + 1}`);
                 console.log('------------------');
-                addEmployee();
+                employeeController.addEmployee();
             }
             console.log('Employee Added Successfully!');
             TestRunner();
             break;
         case 2:
             console.log('------------------');
-            console.log('Total Salary: ', calculateTotalSalary());
+            console.log('Total Salary: ', employeeController.calculateTotalSalary());
             TestRunner();
             break;
         case 3:
             console.log('------------------');
-            const { minSalary, maxSalary } = findMinAndMaxSalary();
+            const { minSalary, maxSalary } = employeeController.findMinAndMaxSalary();
             console.log('Minimum Salary: ', minSalary);
             console.log('Maximum Salary: ', maxSalary);
             TestRunner();
             break;
         case 4:
             console.log('------------------');
-            displayEmployeeDetails();
+            employeeController.displayEmployeeDetails();
             TestRunner();
             break;
         case 5:
             console.log('------------------');
             console.log('Enter Salary to Find Employee: ');
             const salary = parseInt(readline.question('Enter Salary: '));
-            const employee = findEmployeeBySalary(salary);
+            const employee = employeeController.findEmployeeBySalary(salary);
             if (employee) {
                 console.log(`Employee Found: Name: ${employee.getName()}, Salary: ${employee.getSalary()}`);
             } else {
